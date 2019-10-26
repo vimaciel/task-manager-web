@@ -1,0 +1,32 @@
+.side-menu {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 300px;
+  background-color: $secondary-color;
+  padding: 10px;
+  border-right: 2px solid lighten($secondary-color, 8%);
+
+  .header {
+    color: #fff;
+  }
+
+  a {
+    @include border-item-menu();
+    color: white;
+    background-color: lighten($secondary-color, 8%);
+    margin-top: 15px;
+    border-radius: 5px;
+    text-align: center;
+    width: 250px;
+
+    &:hover {
+      cursor: pointer;      
+    }
+  }
+
+  .selected {
+    @include border-item-menu(true);
+  }
+}

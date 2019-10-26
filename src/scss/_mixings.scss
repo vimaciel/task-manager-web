@@ -1,0 +1,17 @@
+@mixin drop-shadow {
+  -webkit-box-shadow: 15px 15px 23px -4px rgba(0, 0, 0, 0.41);
+  -moz-box-shadow: 15px 15px 23px -4px rgba(0, 0, 0, 0.41);
+  box-shadow: 15px 15px 23px -4px rgba(0, 0, 0, 0.41);
+}
+
+@mixin border-item-menu($selected: false) {
+  border-radius: 5px;
+  border-color: $primary-color;
+  border-style: solid;
+
+  @if ($selected) {
+    border-width: 1px 1px 1px 5px;
+  } @else {
+    border-width: 0 0 0 5px;
+  }
+}
