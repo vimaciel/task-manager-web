@@ -1,4 +1,8 @@
 import React, { PureComponent } from 'react'
+import tasksToDo from '../assets/tasks-to-do.png'
+import tasksToDoGray from '../assets/tasks-to-do-gray.png'
+import tasksFinished from '../assets/tasks-finished.png'
+import tasksFinishedGray from '../assets/tasks-finished-gray.png'
 
 export default class SideMenu extends PureComponent {
     render() {
@@ -13,20 +17,42 @@ export default class SideMenu extends PureComponent {
                     <ul>
                         <li className="selected">
                             <a>
-                                <h3>Pending Tasks</h3>
-                                <p>10 tasks are pending</p>
+                                <img src={tasksToDo} width="50px" height="50px" />
+                                <div>
+                                    <h3>Pending Tasks</h3>
+                                    <p>10 tasks are pending</p>
+                                </div>
                             </a>
                         </li>
                         <li>
                             <a>
-                                <h3>Completed Tasks</h3>
-                                <p>5 tasks were completed</p>
+                                <img src={tasksFinishedGray} width="50px" height="50px" />
+                                <div>
+                                    <h3>Completed Tasks</h3>
+                                    <p>5 tasks were completed</p>
+                                </div>
                             </a>
                         </li>
                     </ul>
                 </div>
                 <div className="menu-closed">
-                    
+                    <div className="header">
+                        <h2>
+                            TM
+                        </h2>
+                    </div>
+                    <ul>
+                        <li className="selected">
+                            <a>
+                                <img src={tasksToDo} width="50px" height="50px" />
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <img src={tasksFinishedGray} width="50px" height="50px" />
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         )
