@@ -36,13 +36,8 @@ export default class SideMenu extends PureComponent {
                     </ul>
                 </div>
                 <div className="menu-closed">
-                    <div className="header">
-                        <h2>
-                            TM
-                        </h2>
-                    </div>
                     <ul>
-                        <li className="selected">
+                        <li>
                             <a>
                                 <img src={tasksToDo} width="50px" height="50px" />
                             </a>
@@ -52,7 +47,13 @@ export default class SideMenu extends PureComponent {
                                 <img src={tasksFinishedGray} width="50px" height="50px" />
                             </a>
                         </li>
+                        <li>
+
+                        </li>
                     </ul>
+                    <h2>
+                        Task Manager
+                    </h2>
                 </div>
             </nav>
         )

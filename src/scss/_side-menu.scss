@@ -72,9 +72,19 @@
     .menu-closed {
       display: flex;
       flex-direction: column;
+      position: relative;
+      height: 100%;
 
       li {
         width: 50px;
+      }
+
+      h2 {
+        position: absolute;
+        transform: rotate(-90deg);
+        bottom: 100px;
+        width: 200px;
+        left: -75px;
       }
     }
   }
