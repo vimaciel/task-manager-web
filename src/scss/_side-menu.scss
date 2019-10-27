@@ -21,49 +21,72 @@
       margin-top: 15px;
       border-radius: 5px;
       display: flex;
+      background-color: $box-color;
+
+      a {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        align-items: center;
+      }
 
       &:hover {
         cursor: pointer;
       }
     }
+
+    .selected {
+      @include drop-shadow();
+      border: 1px solid $primary-color;
+    }
   }
 }
 
 @include desktop-screen() {
-  .side-menu {
-    max-width: 300px;
+  .menu-closed {
+    display: none;
+  }
 
-    .menu-closed {
-      display: none;
+  .hamburger {
+    display: none;
+  }
+
+  .menu-opened {
+    text-align: center;
+
+    li {
+      width: 250px;
     }
 
-    .menu-opened {
-      text-align: center;
-
-      li {
-        width: 250px;
-        background-color: $box-color;
-
-        a {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-around;
-          width: 100%;
-          align-items: center;
-        }
-      }
-
-      .selected {
-        @include drop-shadow();
-        border: 1px solid $primary-color;
-      }
+    .menu-icon {
+      width: 50px;
+      height: 50px;
     }
   }
 }
 
 @include mobile-screen() {
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 20px;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: $box-color;
+
+    span {
+      border-radius: 10px;
+      background-color: #fff;
+      width: 26px;
+      height: 2px;
+    }
+  }
+
   .side-menu {
-    max-width: 50px;
+    width: 50px;
 
     .menu-opened {
       display: none;
@@ -85,6 +108,31 @@
         bottom: 100px;
         width: 200px;
         left: -75px;
+      }
+    }
+
+    &.opened {
+      width: 200px;
+
+      ul {
+        li {
+          padding: 10px;
+        }
+      }
+
+      .menu-opened {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .menu-closed {
+        display: none;
+      }
+
+      .menu-icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 15px;
       }
     }
   }

@@ -8,6 +8,11 @@ export default class SideMenu extends PureComponent {
     render() {
         return (
             <nav className="side-menu">
+                <div className="hamburger">
+                    <span />
+                    <span />
+                    <span />
+                </div>
                 <div className="menu-opened">
                     <div className="header">
                         <h2>
@@ -17,7 +22,7 @@ export default class SideMenu extends PureComponent {
                     <ul>
                         <li className="selected">
                             <a>
-                                <img src={tasksToDo} width="50px" height="50px" />
+                                <img className="menu-icon" src={tasksToDo} />
                                 <div>
                                     <h3>Pending Tasks</h3>
                                     <p>10 tasks are pending</p>
@@ -26,7 +31,7 @@ export default class SideMenu extends PureComponent {
                         </li>
                         <li>
                             <a>
-                                <img src={tasksFinishedGray} width="50px" height="50px" />
+                                <img className="menu-icon" src={tasksFinishedGray} />
                                 <div>
                                     <h3>Completed Tasks</h3>
                                     <p>5 tasks were completed</p>
@@ -46,10 +51,7 @@ export default class SideMenu extends PureComponent {
                             <a>
                                 <img src={tasksFinishedGray} width="50px" height="50px" />
                             </a>
-                        </li>
-                        <li>
-
-                        </li>
+                        </li>                       
                     </ul>
                     <h2>
                         Task Manager
