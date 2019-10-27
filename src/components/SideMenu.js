@@ -5,10 +5,28 @@ import tasksFinished from '../assets/tasks-finished.png'
 import tasksFinishedGray from '../assets/tasks-finished-gray.png'
 
 export default class SideMenu extends PureComponent {
+    state = {
+        menuClass: 'side-menu'
+    }
+
+    onHumburgerClick = () => {
+        let menuClass = 'side-menu'
+
+        if (this.state.menuClass === 'side-menu') {
+            menuClass = `${menuClass} opened`
+        }
+
+        this.setState({
+            menuClass
+        })
+    }
+
     render() {
+        const { menuClass } = this.state
+
         return (
-            <nav className="side-menu">
-                <div className="hamburger">
+            <nav className={menuClass}>
+                <div className="hamburger" onClick={this.onHumburgerClick}>
                     <span />
                     <span />
                     <span />
@@ -51,7 +69,7 @@ export default class SideMenu extends PureComponent {
                             <a>
                                 <img src={tasksFinishedGray} width="50px" height="50px" />
                             </a>
-                        </li>                       
+                        </li>
                     </ul>
                     <h2>
                         Task Manager

@@ -71,7 +71,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 20px;
+    height: 40px;
     margin-top: 10px;
     padding: 10px;
     border-radius: 10px;
@@ -83,11 +83,13 @@
       width: 26px;
       height: 2px;
     }
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .side-menu {
-    width: 50px;
-
     .menu-opened {
       display: none;
     }
@@ -114,10 +116,11 @@
     &.opened {
       width: 200px;
 
-      ul {
-        li {
-          padding: 10px;
+      li {
+        a {
+          flex-direction: column;
         }
+        padding: 10px;
       }
 
       .menu-opened {
@@ -130,9 +133,8 @@
       }
 
       .menu-icon {
-        width: 40px;
-        height: 40px;
-        margin-right: 15px;
+        width: 30px;
+        height: 30px;
       }
     }
   }

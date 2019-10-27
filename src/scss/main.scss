@@ -3,6 +3,10 @@
 @import "_functions.scss";
 @import "_side-menu.scss";
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: $background-color;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
