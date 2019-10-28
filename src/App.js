@@ -1,13 +1,25 @@
 import React from 'react'
 import SideMenu from './components/SideMenu'
-import Main from './components/Main'
+import PendingTasks from './components/PendingTasks'
+import FinishedTasks from './components/FinishedTasks'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 function App() {
   return (
-   <div className="container">
-     <SideMenu />
-     <Main />
-   </div>
+    <Router>
+      <div className="container">
+        <SideMenu />
+        <Switch>
+          <Route exact path={['/', '/pending-tasks']} >
+            <PendingTasks />
+          </Route>
+          <Route path="/finished-tasks" >
+            <FinishedTasks />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+
   )
 }
 
