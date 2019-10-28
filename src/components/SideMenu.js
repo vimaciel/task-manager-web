@@ -38,18 +38,18 @@ export default class SideMenu extends PureComponent {
                         </h2>
                     </div>
                     <ul>
-                        <li className="selected">
+                        <li>
                             <a>
-                                <img className="menu-icon" src={tasksToDo} />
+                                <img className="menu-icon" src={tasksToDoGray} />
                                 <div>
                                     <h3>Pending Tasks</h3>
                                     <p>10 tasks are pending</p>
                                 </div>
                             </a>
                         </li>
-                        <li>
+                        <li className="selected">
                             <a>
-                                <img className="menu-icon" src={tasksFinishedGray} />
+                                <img className="menu-icon" src={tasksFinished} />
                                 <div>
                                     <h3>Completed Tasks</h3>
                                     <p>5 tasks were completed</p>
