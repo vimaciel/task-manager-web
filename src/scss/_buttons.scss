@@ -1,0 +1,29 @@
+.btn {
+  padding: 10px;
+  color: #fff;
+  border-radius: 5px;
+  @include drop-shadow();
+}
+
+.btn-primary {
+  @extend .btn;
+  border: 1px solid darken($primary-color, 10%);
+  background-color: $primary-color;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    cursor: pointer;
+  }
+}
+
+.btn-light {
+  @extend .btn;
+  border: 1px solid darken(#828282, 40%);
+  background-color: #828282;
+  color: white;
+
+  &:hover {
+    background-color: darken(#828282, 10%);
+    cursor: pointer;
+  }
+}
