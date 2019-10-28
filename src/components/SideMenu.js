@@ -3,6 +3,7 @@ import tasksToDo from '../assets/tasks-to-do.png'
 import tasksToDoGray from '../assets/tasks-to-do-gray.png'
 import tasksFinished from '../assets/tasks-finished.png'
 import tasksFinishedGray from '../assets/tasks-finished-gray.png'
+import { connect } from 'react-redux'
 
 export default class SideMenu extends PureComponent {
     state = {
