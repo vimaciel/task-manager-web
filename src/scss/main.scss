@@ -41,6 +41,14 @@ p {
 
 a {
   text-decoration: none;
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:active {
+    color: inherit;
+  }
 }
 
 input {
@@ -62,4 +70,8 @@ input {
 
 textarea {
   @extend input;
+}
+
+.content {
+  width: 100%;
 }

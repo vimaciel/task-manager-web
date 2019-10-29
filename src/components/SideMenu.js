@@ -1,11 +1,10 @@
 import React, { PureComponent } from 'react'
-import tasksToDo from '../assets/tasks-to-do.png'
-import tasksToDoGray from '../assets/tasks-to-do-gray.png'
-import tasksFinished from '../assets/tasks-finished.png'
-import tasksFinishedGray from '../assets/tasks-finished-gray.png'
+import { SideOpenedMenuItemFactory, SideClosedMenuItemFactory } from '../helpers/factories'
+import { TaskType } from '../helpers/constants'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
-export default class SideMenu extends PureComponent {
+class SideMenu extends PureComponent {
     state = {
         menuClass: 'side-menu'
     }
@@ -39,38 +38,26 @@ export default class SideMenu extends PureComponent {
                         </h2>
                     </div>
                     <ul>
-                        <li>
-                            <a>
-                                <img className="menu-icon" src={tasksToDoGray} />
-                                <div>
-                                    <h3>Pending Tasks</h3>
-                                    <p>10 tasks are pending</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li className="selected">
-                            <a>
-                                <img className="menu-icon" src={tasksFinished} />
-                                <div>
-                                    <h3>Completed Tasks</h3>
-                                    <p>5 tasks were completed</p>
-                                </div>
-                            </a>
-                        </li>
+                        <SideOpenedMenuItemFactory
+                            selected
+                            taskType={TaskType.PENDING}>
+                            <h3>Pending Tasks</h3>
+                            <p>10 tasks are pending</p>
+                        </SideOpenedMenuItemFactory>
+                        <SideOpenedMenuItemFactory
+                            taskType={TaskType.FINISHED}>
+                            <h3>Completed Tasks</h3>
+                            <p>5 tasks were completed</p>
+                        </SideOpenedMenuItemFactory>
                     </ul>
                 </div>
                 <div className="menu-closed">
                     <ul>
-                        <li>
-                            <a>
-                                <img src={tasksToDo} width="50px" height="50px" />
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <img src={tasksFinishedGray} width="50px" height="50px" />
-                            </a>
-                        </li>
+                        <SideClosedMenuItemFactory
+                            selected
+                            taskType={TaskType.PENDING} />
+                        <SideClosedMenuItemFactory
+                            taskType={TaskType.FINISHED} />
                     </ul>
                     <h2>
                         Task Manager
@@ -80,3 +67,13 @@ export default class SideMenu extends PureComponent {
         )
     }
 }
+
+const mapStateToProps = (_, { location }) => {
+    console.log(location)
+    return {
+        location
+    }
+}
+
+
+export default withRouter(connect(mapStateToProps)(SideMenu))
