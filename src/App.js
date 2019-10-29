@@ -3,7 +3,6 @@ import SideMenu from './components/SideMenu'
 import PendingTasks from './components/PendingTasks'
 import CompletedTasks from './components/CompletedTasks'
 import TaskForm from './components/TaskForm'
-import Header from './components/Header'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 function App() {
@@ -12,13 +11,12 @@ function App() {
       <div className="container">
         <SideMenu />
         <TaskForm />
-        <div className="content">
-          <Header />
+        <div className="content">          
           <Switch>
             <Route exact path={['/', '/pending-tasks']} >
               <PendingTasks />
             </Route>
-            <Route path="/finished-tasks" >
+            <Route path="/completed-tasks" >
               <CompletedTasks />
             </Route>
           </Switch>

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import task from './task'
 import tasks from './tasks'
+import taskForm from './taskForm'
 
 export default combineReducers({
-    task,
-    tasks
+    tasks,
+    taskForm
 })

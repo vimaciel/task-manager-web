@@ -5,6 +5,7 @@
 @import "_modal.scss";
 @import "_buttons.scss";
 @import "_header.scss";
+@import "_task.scss";
 
 * {
   box-sizing: border-box;
@@ -42,6 +43,7 @@ p {
 a {
   text-decoration: none;
 
+  &:link,
   &:active,
   &:visited {
     color: #fff;
@@ -71,4 +73,21 @@ textarea {
 
 .content {
   width: 100%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: lighten($color: black, $amount: 30%);
+  border-radius: 5px;
 }

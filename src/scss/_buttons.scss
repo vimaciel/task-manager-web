@@ -27,3 +27,15 @@
     cursor: pointer;
   }
 }
+
+.btn-danger {
+  @extend .btn;
+  border: 1px solid darken(#F14668, 40%);
+  background-color: #F14668;
+  color: #fff;
+
+  &:hover {
+    background-color: darken(#F14668, 10%);
+    cursor: pointer;
+  }
+}

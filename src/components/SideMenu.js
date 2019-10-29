@@ -10,7 +10,17 @@ class SideMenu extends PureComponent {
         selectedItem: TaskType.PENDING
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.location !== this.props.location) {
+            this.onInit()
+        }
+    }
+
     componentDidMount() {
+        this.onInit()
+    }
+
+    onInit = () => {
         const { location } = this.props
         const { pathname } = location
 
@@ -94,7 +104,7 @@ class SideMenu extends PureComponent {
     }
 }
 
-const mapStateToProps = (_, { location }) => { 
+const mapStateToProps = (_, { location }) => {
     return {
         location
     }

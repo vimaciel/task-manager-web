@@ -1,3 +1,3 @@
-export default function Tasks(store = {}, action) {
-    return store
+export default function Tasks(state = {}, action) {
+    return state
 }

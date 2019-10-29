@@ -1,0 +1,72 @@
+.task-card {
+    background-color: $box-color;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;    
+    align-items: flex-start;
+    flex-direction: column;
+
+    p {
+        font-size: 1.0em;
+    }
+
+    .dates{ 
+        @include drop-shadow();
+        border: 2px dotted gray;
+        border-radius: 5px;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        h3{
+            padding: 0
+        }
+    }
+}
+
+.task-info {
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    button {
+        width: 45%;
+    }
+}
+
+@include desktop-screen(){
+    .task-card {       
+        min-width: 300px;                         
+    }
+
+    .tasks {        
+        display: flex;        
+        margin: 20px;
+        flex-wrap: wrap;        
+        overflow-y: auto;
+        justify-content: center;
+        height: 700px;
+    }    
+}
+
+@include mobile-screen(){
+    .tasks {
+        height: 500px;
+        margin-top: 10px;
+        overflow-y: auto;
+    }
+
+    .buttons {
+        button {
+            width: 50%;
+        }
+    }
+}
+
