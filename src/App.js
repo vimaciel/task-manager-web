@@ -1,7 +1,7 @@
 import React from 'react'
 import SideMenu from './components/SideMenu'
 import PendingTasks from './components/PendingTasks'
-import FinishedTasks from './components/FinishedTasks'
+import CompletedTasks from './components/CompletedTasks'
 import TaskForm from './components/TaskForm'
 import Header from './components/Header'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -19,7 +19,7 @@ function App() {
               <PendingTasks />
             </Route>
             <Route path="/finished-tasks" >
-              <FinishedTasks />
+              <CompletedTasks />
             </Route>
           </Switch>
         </div>

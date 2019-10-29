@@ -14,9 +14,9 @@ class SideMenu extends PureComponent {
         const { location } = this.props
         const { pathname } = location
 
-        if (pathname === '/finished-tasks') {
+        if (pathname === '/completed-tasks') {
             this.setState({
-                selectedItem: TaskType.FINISHED
+                selectedItem: TaskType.COMPLETED
             })
 
             return
@@ -70,7 +70,7 @@ class SideMenu extends PureComponent {
                         </SideOpenedMenuItemFactory>
                         <SideOpenedMenuItemFactory
                             selectedItem={selectedItem}
-                            taskType={TaskType.FINISHED}>
+                            taskType={TaskType.COMPLETED}>
                             <h3>Completed Tasks</h3>
                             <p>5 tasks were completed</p>
                         </SideOpenedMenuItemFactory>
@@ -83,7 +83,7 @@ class SideMenu extends PureComponent {
                             taskType={TaskType.PENDING} />
                         <SideClosedMenuItemFactory
                             selectedItem={selectedItem}
-                            taskType={TaskType.FINISHED} />
+                            taskType={TaskType.COMPLETED} />
                     </ul>
                     <h2>
                         Task Manager
@@ -94,8 +94,7 @@ class SideMenu extends PureComponent {
     }
 }
 
-const mapStateToProps = (_, { location }) => {
-    console.log(location)
+const mapStateToProps = (_, { location }) => { 
     return {
         location
     }

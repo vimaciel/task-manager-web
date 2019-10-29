@@ -1,4 +1,4 @@
-import React, { Component, PureComponent, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 
 class Modal extends PureComponent {
     render() {

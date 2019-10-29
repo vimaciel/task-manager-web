@@ -1,4 +1,4 @@
 export const TaskType = {
     PENDING: 1,
-    FINISHED: 2
+    COMPLETED: 2
 }

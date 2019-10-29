@@ -2,8 +2,8 @@ import React from 'react'
 import { TaskType } from './constants'
 import tasksToDo from '../assets/tasks-to-do.png'
 import tasksToDoGray from '../assets/tasks-to-do-gray.png'
-import tasksFinished from '../assets/tasks-finished.png'
-import tasksFinishedGray from '../assets/tasks-finished-gray.png'
+import tasksCompleted from '../assets/tasks-completed.png'
+import tasksCompletedGray from '../assets/tasks-completed-gray.png'
 import { SideClosedMenuItem, SideOpenedMenuItem } from '../components/SideMenuItem'
 
 export const SideOpenedMenuItemFactory = ({ taskType, selectedItem, children }) => {
@@ -34,10 +34,10 @@ const IconMenuItemFactory = (taskType, selectedItem) => {
     const selected = taskType === selectedItem
 
     switch (taskType) {
-        case TaskType.FINISHED:
+        case TaskType.COMPLETED:
             return {
-                redirectTo: '/finished-tasks',
-                icon: selected ? tasksFinished : tasksFinishedGray,
+                redirectTo: '/completed-tasks',
+                icon: selected ? tasksCompleted : tasksCompletedGray,
                 selected: selected
             }
         default:
