@@ -6,7 +6,27 @@ import { withRouter } from 'react-router-dom'
 
 class SideMenu extends PureComponent {
     state = {
-        menuClass: 'side-menu'
+        menuClass: 'side-menu',
+        selectedItem: TaskType.PENDING
+    }
+
+    componentDidMount() {
+        const { location } = this.props
+        const { pathname } = location
+
+        if (pathname === '/finished-tasks') {
+            this.setState({
+                selectedItem: TaskType.FINISHED
+            })
+
+            return
+        }
+
+        if (pathname === '/' || pathname === '/pending-tasks') {
+            this.setState({
+                selectedItem: TaskType.PENDING
+            })
+        }
     }
 
     onHumburgerClick = () => {
@@ -22,7 +42,11 @@ class SideMenu extends PureComponent {
     }
 
     render() {
-        const { menuClass } = this.state
+        const { menuClass, selectedItem } = this.state
+
+        if (!selectedItem) {
+            return <span>...Loading</span>
+        }
 
         return (
             <nav className={menuClass}>
@@ -39,12 +63,13 @@ class SideMenu extends PureComponent {
                     </div>
                     <ul>
                         <SideOpenedMenuItemFactory
-                            selected
+                            selectedItem={selectedItem}
                             taskType={TaskType.PENDING}>
                             <h3>Pending Tasks</h3>
                             <p>10 tasks are pending</p>
                         </SideOpenedMenuItemFactory>
                         <SideOpenedMenuItemFactory
+                            selectedItem={selectedItem}
                             taskType={TaskType.FINISHED}>
                             <h3>Completed Tasks</h3>
                             <p>5 tasks were completed</p>
@@ -54,9 +79,10 @@ class SideMenu extends PureComponent {
                 <div className="menu-closed">
                     <ul>
                         <SideClosedMenuItemFactory
-                            selected
+                            selectedItem={selectedItem}
                             taskType={TaskType.PENDING} />
                         <SideClosedMenuItemFactory
+                            selectedItem={selectedItem}
                             taskType={TaskType.FINISHED} />
                     </ul>
                     <h2>

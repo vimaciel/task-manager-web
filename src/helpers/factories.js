@@ -6,8 +6,9 @@ import tasksFinished from '../assets/tasks-finished.png'
 import tasksFinishedGray from '../assets/tasks-finished-gray.png'
 import { SideClosedMenuItem, SideOpenedMenuItem } from '../components/SideMenuItem'
 
-export const SideOpenedMenuItemFactory = ({ taskType, selected, children }) => {
-    const { icon, redirectTo } = IconMenuItemFactory(taskType, selected)
+export const SideOpenedMenuItemFactory = ({ taskType, selectedItem, children }) => {
+    const { icon, redirectTo, selected } = IconMenuItemFactory(taskType, selectedItem)
+
     return (
         <SideOpenedMenuItem
             sourceIcon={icon}
@@ -19,8 +20,8 @@ export const SideOpenedMenuItemFactory = ({ taskType, selected, children }) => {
 
 }
 
-export const SideClosedMenuItemFactory = ({ taskType, selected }) => {
-    const { icon, redirectTo } = IconMenuItemFactory(taskType, selected)
+export const SideClosedMenuItemFactory = ({ taskType, selectedItem }) => {
+    const { icon, redirectTo } = IconMenuItemFactory(taskType, selectedItem)
 
     return (
         <SideClosedMenuItem
@@ -29,17 +30,21 @@ export const SideClosedMenuItemFactory = ({ taskType, selected }) => {
     )
 }
 
-const IconMenuItemFactory = (taskType, selected) => {
+const IconMenuItemFactory = (taskType, selectedItem) => {
+    const selected = taskType === selectedItem
+
     switch (taskType) {
         case TaskType.FINISHED:
             return {
                 redirectTo: '/finished-tasks',
-                icon: selected ? tasksFinished : tasksFinishedGray
+                icon: selected ? tasksFinished : tasksFinishedGray,
+                selected: selected
             }
         default:
             return {
                 redirectTo: '/',
-                icon: selected ? tasksToDo : tasksToDoGray
+                icon: selected ? tasksToDo : tasksToDoGray,
+                selected: selected
             }
     }
 }
