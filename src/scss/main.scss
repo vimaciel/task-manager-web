@@ -42,12 +42,9 @@ p {
 a {
   text-decoration: none;
 
+  &:active,
   &:visited {
-    color: inherit;
-  }
-
-  &:active {
-    color: inherit;
+    color: #fff;
   }
 }
 
