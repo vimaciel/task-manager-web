@@ -33,7 +33,7 @@ export default class SideMenu extends PureComponent {
                     <span />
                 </div>
                 <div className="menu-opened">
-                    <div className="header">
+                    <div className="header-menu">
                         <h2>
                             Task Manager
                         </h2>
