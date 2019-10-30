@@ -4,14 +4,13 @@ import { connect } from 'react-redux'
 import _ from 'lodash'
 import { setTaskModal } from '../actions/taskModal'
 import { createTask, updateTask } from '../actions/tasks'
-import { withRouter } from 'react-router-dom'
 
 class TaskForm extends PureComponent {
     state = {
         show: false,
         task: null,
         title: '',
-        description: ''
+        description: ''        
     }
 
     componentDidUpdate(prevProps) {
@@ -49,7 +48,7 @@ class TaskForm extends PureComponent {
     }
 
     onSave = () => {
-        const { taskModal, createTask, updateTask, history } = this.props
+        const { taskModal, createTask, updateTask } = this.props
         const { task } = taskModal
         const { description, title } = this.state
 
@@ -57,12 +56,10 @@ class TaskForm extends PureComponent {
             task.description = description
             task.title = title
             updateTask(task)            
-            history.push(task.completed ? '/completed-tasks' : '/pending-tasks')    
             return
         }
 
         createTask({ description, title })
-        history.push('/pending-tasks')
     }
 
     render() {
@@ -110,8 +107,7 @@ const mapDispatchToProps = (dispatch) => {
         createTask: task => {
             dispatch(createTask(task))
         }
-
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TaskForm))
+export default connect(mapStateToProps, mapDispatchToProps)(TaskForm)

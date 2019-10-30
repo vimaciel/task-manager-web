@@ -75,14 +75,14 @@ class SideMenu extends PureComponent {
                         <SideOpenedMenuItemFactory
                             selectedItem={selectedItem}
                             taskType={TaskType.PENDING}>
-                            <h3>Pending Tasks</h3>
-                            <p>10 tasks are pending</p>
+                            <h3>Pending</h3>
+                            <p>List of pending tasks</p>
                         </SideOpenedMenuItemFactory>
                         <SideOpenedMenuItemFactory
                             selectedItem={selectedItem}
                             taskType={TaskType.COMPLETED}>
-                            <h3>Completed Tasks</h3>
-                            <p>5 tasks were completed</p>
+                            <h3>Completed</h3>
+                            <p>List of completed tasks</p>
                         </SideOpenedMenuItemFactory>
                     </ul>
                 </div>

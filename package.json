@@ -13,7 +13,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "redux": "^4.0.4",
-    "redux-saga": "^1.1.1"
+    "redux-saga": "^1.1.1",
+    "redux-saga-test-plan": "^4.0.0-rc.3"
   },
   "scripts": {
     "start": "react-scripts start",

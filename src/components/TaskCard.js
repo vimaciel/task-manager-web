@@ -2,11 +2,11 @@ import React, { PureComponent } from 'react'
 import moment from 'moment'
 import { connect } from 'react-redux'
 import { setTaskModal } from '../actions/taskModal'
-import { updateTask } from '../actions/tasks'
+import { updateTask, deleteTask } from '../actions/tasks'
 
 class TaskCard extends PureComponent {
     render() {
-        const { task, onEditTask, completeTask } = this.props
+        const { task, onEditTask, completeTask, deleteTask } = this.props
         const { title, description, createdAt, updatedAt, completed } = task
         
 
@@ -20,7 +20,7 @@ class TaskCard extends PureComponent {
                 <p>{description}</p>
 
                 <div className="buttons">
-                    <button className="btn-danger">Delete</button>
+                    <button className="btn-danger" onClick={_ => deleteTask(task)}>Delete</button>
                     <button className="btn-light" onClick={_ => onEditTask(task)}>Edit</button>
                     {!completed && <button className="btn-primary" onClick={_ => completeTask(task)}>Complete</button>}
                 </div>
@@ -37,6 +37,9 @@ const mapDispatchToProps = dispatch => {
         completeTask: task => {
             task.completed = true
             dispatch(updateTask(task))
+        },
+        deleteTask: task => {
+            dispatch(deleteTask(task))
         }
     }
 }

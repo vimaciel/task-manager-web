@@ -45,6 +45,10 @@
 }
 
 @include desktop-screen() {
+  .side-menu {
+    position: relative;  
+  }
+
   .menu-closed {
     display: none;
   }
@@ -89,9 +93,10 @@
       cursor: pointer;
     }
   }
-  .side-menu {      
+  .side-menu {        
     width: 70px; 
     @include transition(width, 100ms, ease);
+    position: relative;
 
     .menu-opened {
       display: none;
@@ -118,7 +123,8 @@
 
     &.opened {
       width: 200px;
-      animation: opacity 1000ms;
+      animation: opacity 100ms;
+      position: absolute;
       @include opacity(opacity);
       
       .hamburger {
@@ -141,6 +147,7 @@
         width: 150px;
         a {
           flex-direction: column;
+          text-align: center;
         }
         padding: 10px;
       }
