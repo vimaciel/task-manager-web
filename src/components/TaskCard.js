@@ -1,23 +1,28 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
+import moment from 'moment'
 
-class TaskCard extends Component {
+class TaskCard extends PureComponent {
     render() {
-        return (
-            <div className="task-card">               
+        const { task } = this.props
+        const { id, title, description, createdAt, updatedAt } = task
 
-                <h2>Title</h2>
+
+        return (
+            <div className="task-card">
+
+                <h2>{title}</h2>
                 <div className="dates">
-                    <h3>Created: 29/10/2019 18:00</h3>
-                    <h3>Updated: 29/10/2019 18:00</h3>
+                    <h3>Created: {moment(createdAt).format('LLL')}</h3>
+                    {updatedAt && <h3>Updated: {moment(updatedAt).format('LLL')}</h3>} 
                 </div>
-                <p>description ...</p>
-                
+                <p>{description}</p>
+
                 <div className="buttons">
                     <button className="btn-danger">Delete</button>
                     <button className="btn-light">Edit</button>
                 </div>
             </div>
-        );
+        )
     }
 }
 
