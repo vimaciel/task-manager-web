@@ -2,10 +2,11 @@ import React, { PureComponent } from 'react'
 import moment from 'moment'
 import { connect } from 'react-redux'
 import { setTaskForm } from '../actions/taskForm'
+import { updateTask } from '../actions/tasks'
 
 class TaskCard extends PureComponent {
     render() {
-        const { task, onEditTask } = this.props
+        const { task, onEditTask, completeTask } = this.props
         const { title, description, createdAt, updatedAt, completed } = task
         
 
@@ -21,7 +22,7 @@ class TaskCard extends PureComponent {
                 <div className="buttons">
                     <button className="btn-danger">Delete</button>
                     <button className="btn-light" onClick={_ => onEditTask(task)}>Edit</button>
-                    {!completed && <button className="btn-primary">Complete</button>}
+                    {!completed && <button className="btn-primary" onClick={_ => completeTask(task)}>Complete</button>}
                 </div>
             </div>
         )
@@ -32,6 +33,10 @@ const mapDispatchToProps = dispatch => {
     return {
         onEditTask: task => {
             dispatch(setTaskForm(true, task))
+        },
+        completeTask: task => {
+            task.completed = true
+            dispatch(updateTask(task))
         }
     }
 }
