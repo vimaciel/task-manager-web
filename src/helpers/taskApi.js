@@ -16,3 +16,7 @@ export const updateTask = async ({ description, title, id, completed }) => {
     return data
 }
 
+export const deleteTask = async ({ id }) => {
+    const { data } = await axios.delete(`${url}${id}`)
+    return data
+}

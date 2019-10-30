@@ -2,8 +2,9 @@ import React, { PureComponent } from 'react'
 import Modal from './Modal'
 import { connect } from 'react-redux'
 import _ from 'lodash'
-import { setTaskForm } from '../actions/taskForm'
+import { setTaskModal } from '../actions/taskModal'
 import { createTask, updateTask } from '../actions/tasks'
+import { withRouter } from 'react-router-dom'
 
 class TaskForm extends PureComponent {
     state = {
@@ -14,7 +15,7 @@ class TaskForm extends PureComponent {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.taskForm !== this.props.taskForm) {
+        if (prevProps.taskModal !== this.props.taskModal) {
             this.onInit()
         }
     }
@@ -24,9 +25,9 @@ class TaskForm extends PureComponent {
     }
 
     onInit = () => {
-        const { taskForm } = this.props
-        if (!_.isEmpty(taskForm)) {
-            const { task, show } = taskForm
+        const { taskModal } = this.props
+        if (!_.isEmpty(taskModal)) {
+            const { task, show } = taskModal
             this.setState({
                 description: task ? task.description : '',
                 title: task ? task.title : '',
@@ -48,24 +49,26 @@ class TaskForm extends PureComponent {
     }
 
     onSave = () => {
-        const { taskForm, createTask, updateTask } = this.props
-        const { task } = taskForm
+        const { taskModal, createTask, updateTask, history } = this.props
+        const { task } = taskModal
         const { description, title } = this.state
 
         if (task) {
             task.description = description
             task.title = title
-            updateTask(task)
+            updateTask(task)            
+            history.push(task.completed ? '/completed-tasks' : '/pending-tasks')    
             return
         }
 
         createTask({ description, title })
+        history.push('/pending-tasks')
     }
 
     render() {
         const { title, description, show } = this.state
-        const { taskForm } = this.props
-        const { task } = taskForm
+        const { taskModal } = this.props
+        const { task } = taskModal
 
         const modalTitle = task ? 'Edit Task' : 'New Task'
         const saveTitle = task ? 'Update' : 'Create'
@@ -78,7 +81,7 @@ class TaskForm extends PureComponent {
                 <div className="modal-buttons">
                     <button className="btn-light" onClick={this.props.closeTaskForm}>
                         Cancel
-                    </button>                    
+                    </button>
                     <button className="btn-primary" onClick={this.onSave}>
                         {saveTitle}
                     </button>
@@ -88,16 +91,16 @@ class TaskForm extends PureComponent {
     }
 }
 
-const mapStateToProps = ({ taskForm }) => {
+const mapStateToProps = ({ taskModal }) => {
     return {
-        taskForm
+        taskModal
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         closeTaskForm: () => {
-            dispatch(setTaskForm(false))
+            dispatch(setTaskModal(false))
         },
 
         updateTask: task => {
@@ -111,4 +114,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TaskForm)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TaskForm))

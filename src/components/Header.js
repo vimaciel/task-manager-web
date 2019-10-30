@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { setTaskForm } from '../actions/taskForm'
+import { setTaskModal } from '../actions/taskModal'
 
 class Header extends PureComponent {
     render() {
@@ -19,7 +19,7 @@ class Header extends PureComponent {
 const mapDispatchToProps = (dispatch) => {
     return {
         openTaskForm: () => {
-            dispatch(setTaskForm(true))
+            dispatch(setTaskModal(true))
         }
     }
 }

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import moment from 'moment'
 import { connect } from 'react-redux'
-import { setTaskForm } from '../actions/taskForm'
+import { setTaskModal } from '../actions/taskModal'
 import { updateTask } from '../actions/tasks'
 
 class TaskCard extends PureComponent {
@@ -32,7 +32,7 @@ class TaskCard extends PureComponent {
 const mapDispatchToProps = dispatch => {
     return {
         onEditTask: task => {
-            dispatch(setTaskForm(true, task))
+            dispatch(setTaskModal(true, task))
         },
         completeTask: task => {
             task.completed = true
