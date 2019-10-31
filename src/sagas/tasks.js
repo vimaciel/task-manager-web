@@ -26,24 +26,24 @@ export function* getTasks({ onlyCompleted }) {
     yield put(setPage(onlyCompleted ? 'completed' : 'pending'))
 }
 
-export function* createTask({ task }) {
+function* createTask({ task }) {
     yield call(api.createTask, task)
     yield getTasksByType()
     yield put(setTaskModal(false))
 }
 
-export function* updateTask({ task }) {
+function* updateTask({ task }) {
     yield call(api.updateTask, task)
     yield getTasksByType()
     yield put(setTaskModal(false))
 }
 
-export function* deleteTask({ task }) {
+function* deleteTask({ task }) {
     yield call(api.deleteTask, task)
     yield getTasksByType()
 }
 
-export function* getTasksByType() {
+function* getTasksByType() {
     const { page } = yield select()
     yield getTasks({ onlyCompleted: page === 'completed' })
 }
